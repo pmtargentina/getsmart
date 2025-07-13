@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GetSmart - Tecnología para Tu Diversión</title>
+  <link rel="icon" href="./imagen/icono.jpg" type="image/png">
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url('./imagen/eventos.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    }
+    .flyer {
+      background-color: #ffffffce;
+      max-width: 500px;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    }
+    .flyer2 {
+      background-color: #ffffffce;
+      width: 90%;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+      margin-top: 40px;
+    }
+    .flyer2 a {
+      text-decoration: none;
+      color: #004466;
+    }
+
+    .flyer2 a:hover {
+      color: #0077aa;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #003366;
+    }
+    h2 {
+      font-size: 1.2rem;
+      color: #006699;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    .contacto {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #004466;
+      text-align: center;
+    }
+
+    .icon {
+      margin-right: 8px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+    .flyer img.logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .flyer h1 {
+      color: #003366;
+    }
+
+    .flyer h2 {
+      color: #006699;
+    }
+
+    .flyer ul {
+      list-style: none;
+      padding-left: 0;
+      text-align: left;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    .flyer ul li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    /* EVENTOS SECTION */
+    .eventos {
+      margin-top: 30px;
+    }
+
+    .evento {
+      width: 50%;
+
+      margin-top: 60px;
+      margin-bottom: 50px;
+      margin-left: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .evento2 {
+      width: 90%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 60px;
+      margin-left: 20px;
+      background: #000000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .evento .slider {
+      flex: 1 1 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .evento .slider img {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+
+    .evento .slider img.active {
+      display: block;
+    }
+
+    .evento .info {
+      flex: 1 1 50%;
+      padding: 30px;
+    }
+
+    .evento .info h3 {
+      margin-top: 0;
+      color: #003366;
+    }
+
+    .evento .info p {
+      line-height: 1.6;
+    }
+
+    .titulo-seccion {
+      font-size: 1.4rem;
+      text-align: center;
+      color: #0010f3;
+    }
+    .contacto a {
+      text-decoration: none;
+      color: #004466;
+    }
+
+    .contacto a:hover {
+      color: #0077aa;
+    }
+    .servicio-btn {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #004466;
+      padding: 5px 0;
+      text-align: left;
+      width: 100%;
+    }
+    .servicio-btn a {
+      text-decoration: none;
+      color: #004466;
+    }
+    .servicio-btn:hover {
+      color: #0077aa;
+      text-decoration: none;
+    }
+
+    /* Modal popup */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Establece relación fija */
+  background-color: #000; /* Color de fondo si hay espacios vacíos */
+}
+
+.slider img,
+.slider video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 100%;
+  object-fit: cover;     /* Escala sin deformar, recorta si hace falta */
+  display: none;
+  border-radius: 10; /* o ponelo si querés esquinas redondeadas */
+}
+
+.slider img.active,
+.slider video.active {
+  display: block;
+}
+  </style>
+  </head>
+<body>        
+  <div class="flyer">
+    <a href="index.html"><img src="./imagen/logo.png" alt="GetSmart" style="width: 240px; margin-bottom: 20px;"></a>
+
+    <hr>
+
+    <h1>🎉 Servicios para Fiestas y Eventos 🎉</h1>
+    <h2>Convertí cada momento en un recuerdo épico.</h2>
+
+    <p><strong>Nuestros Servicios:</strong></p>
+    <ul>
+      <li><button class="servicio-btn" data-id="votacion">🗳️ Sistema de Votación en Vivo</button></li>
+      <li><button class="servicio-btn" data-id="espejo">📸 Espejo Mágico Fotográfico</button></li>
+      <li><button class="servicio-btn" data-id="360">🎥 Video 360°</button></li>
+    </ul>
+
+    <p style="margin-top: 20px; text-align: center; font-size: 20px; color: #ff3300;">
+      Ideal para fiestas, bodas, lanzamientos, ferias y eventos corporativos.
+    </p>
+  
+    <hr>
+
+    <div class="contacto">
+        <a href="https://wa.me/541126372751" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" width="20" style="vertical-align: middle; margin-right: 6px;">
+    +54 9 11 2637 2751
+  </a><br>
+      <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" width="20" style="vertical-align: middle; margin-right: 6px;"> <a href="mailto:hola.getsmart@gmail.com" target="_blank">hola.getsmart@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- Slider -->
+  <div class="evento">
+    <div class="slider" id="slider4">
+      <img src="./imagen/votacion1.jpg" class="active" />
+      <img src="./imagen/votacion2.jpg" />
+      <img src="./imagen/votacion3.jpg" />
+      <img src="./imagen/votacion4.jpg" />
+      <img src="./imagen/espejo1.jpg" />
+      <img src="./imagen/espejo2.jpg" />
+      <img src="./imagen/espejo3.jpg" />
+      <img src="./imagen/espejo4.jpg" />
+      <img src="./imagen/espejo5.jpg" />
+      <img src="./imagen/360.jpg" />
+      <video  autoplay muted loop playsinline>
+        <source src="./imagen/360_2.mp4" type="video/mp4">
+        Tu navegador no soporta el video HTML5.
+      </video>
+    </div>
+
+
+    <!-- SECCIÓN EVENTOS -->
+    <div class="flyer2">
+      <div class="titulo-seccion">📊<a href="index.html">Soluciones Digitales a Tu Medida</a> 📊
+      </div>
+    </div>
+  </div>  
+    
+  <div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="cerrarModal()">❌</span>
+    <h3 id="modal-titulo"></h3>
+    <p id="modal-texto"></p>
+  </div>
+  </div>
+
+
+
+
+
+  <!-- Slider Script -->
+  <script>
+    function startSlider(id) {
+      const container = document.getElementById(id);
+      const items = container.querySelectorAll("img, video");
+      let index = 0;
+
+
+    setInterval(() => {
+      items[index].classList.remove("active");
+
+      // Pausar el video si corresponde
+      if (items[index].tagName === "VIDEO") {
+        items[index].pause();
+      }
+
+      index = (index + 1) % items.length;
+      items[index].classList.add("active");
+
+      // Reproducir el video si corresponde
+      if (items[index].tagName === "VIDEO") {
+          items[index].play();
+      }
+    }, 5000); // cada 4 segundos
+  }
+
+    startSlider("slider4");
+  </script>
+
+<script>
+  const detalles = {
+    votacion: "Ideal para eventos, sorteos o conferencias. Mostrá preguntas con imágenes, tiempo de votación, respuestas en vivo y resultados en pantalla. Funciona en red local, sin internet.",
+    espejo: "Capturá momentos inolvidables con nuestro Espejo Magico. Plantilla Personalizadas acorde a la tematica. Impresión de foto al instante. Ideal para fiestas, eventos, ferias o lanzamientos.",
+    360: "Convertí cada momento en un recuerdo épico. Capturá la experiencia completa desde todos los ángulos. Genera clips dinámicos y envolventes donde los protagonistas son tus invitados. Ideal para fiestas, bodas, lanzamientos, ferias y eventos corporativos. ¡Impacto asegurado en redes sociales!"
+  };
+
+  const modal = document.getElementById("modal");
+  const titulo = document.getElementById("modal-titulo");
+  const texto = document.getElementById("modal-texto");
+
+  document.querySelectorAll(".servicio-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-id");
+      titulo.textContent = btn.textContent;
+      texto.textContent = detalles[id];
+      modal.style.display = "flex";
+    });
+  });
+
+  function cerrarModal() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(e) {
+    if (e.target === modal) cerrarModal();
+  }
+</script>
+
+
+</body>
+</html>
