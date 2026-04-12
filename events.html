@@ -454,7 +454,7 @@
         <div class="row">
             <div class="col-lg-10 mx-auto text-center">
                 <h2 class="section-title mb-4" style="color: white;">¿Necesitas soluciones digitales para tu negocio?</h2>
-                <p class="lead mb-5" style="color: #ecf0f1;">Además de servicios para eventos, también ofrecemos automatización, desarrollo web, programas a medida y consultoría técnica para hacer crecer tu negocio</p>
+                <p class="lead mb-5" style="color: #ecf0f1;">Además de servicios para eventos, también ofrecemos automatización, desarrollo web y consultoría técnica para hacer crecer tu negocio</p>
                 
                 <div class="row g-4 mb-5">
                     <div class="col-md-4">
@@ -471,8 +471,8 @@
                             <div class="service-icon" style="font-size: 2.5rem; color: #3498db; margin-bottom: 20px;">
                                 <i class="fas fa-code"></i>
                             </div>
-                            <h4>Programas a Medida y Desarrollo Web</h4>
-                            <p>Sistemas a Medida en Python/SQL. Páginas web profesionales y tiendas online.</p>
+                            <h4>Desarrollo Web</h4>
+                            <p>Páginas web profesionales y tiendas online con WordPress.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -626,24 +626,40 @@
     });
   </script>
 
-<!-- Botón flotante para Soluciones Informáticas -->
-<a href="index.html" class="floating-btn-digital" id="floatingBtnDigital" style="display: none; position: fixed; bottom: 100px; right: 30px; background-color: #2bc032; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; transition: all 0.3s ease; text-decoration: none;">
-    <i class="fas fa-laptop-code" style="font-size: 1.2rem; margin-bottom: 2px;"></i>
-    <span>Soluciones</span>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Botón flotante para Fiestas y Eventos -->
+<a href="soporte.html" class="floating-btn-events" id="floatingBtnEvents" style="display: none; position: fixed; bottom: 100px; right: 30px; background-color: #000000; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; transition: all 0.3s ease; text-decoration: none;">
+    <i class="fas fa-party-horn" style="font-size: 1.2rem; margin-bottom: 2px;"></i>
+    <span>Soporte</span>
+</a>
+
+<a href="soporte.html" class="floating-btn-events" id="floatingBtnEvents">
+  <i class="fas fa-party-horn"></i>
+  <span>Soporte</span>
+</a>
+
+<a href="index.html" class="floating-btn-events" id="floatingBtnEvents" style="display: none; position: fixed; bottom: 170px; right: 30px; background-color: #6b9fff; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; transition: all 0.3s ease; text-decoration: none;">
+    <i class="fas fa-party-horn" style="font-size: 1.2rem; margin-bottom: 2px;"></i>
+    <span>Solución</span>
+</a>
+
+<a href="index.html" class="floating-btn-events" id="floatingBtnEvents">
+  <i class="fas fa-party-horn"></i>
+  <span>Solución</span>
 </a>
 
 <script>
-    // Mostrar/ocultar botón flotante al hacer scroll
-    window.addEventListener('scroll', function() {
-        const floatingBtn = document.getElementById('floatingBtnDigital');
-        if (window.scrollY > 300) {
-            floatingBtn.style.display = 'flex';
-        } else {
-            floatingBtn.style.display = 'none';
-        }
-    });
+  window.addEventListener('scroll', function() {
+    const floatingBtn = document.getElementById('floatingBtnEvents');
+    if (window.scrollY > 300) {
+      floatingBtn.style.display = 'flex';
+    } else {
+      floatingBtn.style.display = 'flex';
+    }
+  });
 </script>
 
 </body>
-
 </html>

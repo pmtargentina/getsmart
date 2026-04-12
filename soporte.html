@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GetSmart - Automatizo tu negocio para que ganes tiempo y vendas más</title>
+    <title>Soporte Técnico Remoto - GetSmart</title>
     <link rel="icon" href="./imagen/icono.jpg" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,6 +15,14 @@
             --light: #ecf0f1;
             --dark: #2c3e50;
         }
+
+        .hero-soporte { background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%); color: white; padding: 60px 0; border-radius: 0 0 50px 50px; }
+        .step-card { transition: transform 0.3s; border: none; border-radius: 15px; }
+        .step-card:hover { transform: translateY(-5px); }
+        .step-number { width: 40px; height: 40px; background-color: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px; }
+        .btn-download { background-color: var(--accent); border: none; padding: 15px 30px; font-weight: bold; font-size: 1.1rem; border-radius: 10px; transition: 0.3s; }
+        .btn-download:hover { background-color: #2980b9; transform: scale(1.05); }
+
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -78,8 +86,8 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80');
-            background-size: cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('imagen/soporte.png');
+            background-size: 50%;
             background-position: center;
             color: white;
             padding: 120px 0;
@@ -394,6 +402,7 @@
     </style>
 </head>
 <body>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
@@ -404,210 +413,86 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">Soluciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#process">Cómo Trabajo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#success">Casos de Éxito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Testimonios</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#contact">Contacto</a>
                     </li>
                 </ul>
-                <a href="https://wa.me/5491126372751?text=Hola!%20Me%20interesa%20una%20consulta%20gratuita%20para%20mi%20negocio." class="btn btn-primary ms-lg-3" target="_blank">Consulta Gratuita</a>
+                <a href="https://wa.me/5491126372751?text=Hola!%20Visité%20tu%20página%20web%20y%20me%20interesa%20tu%20servicio%20de%20soporte%20remoto." class="btn btn-primary ms-lg-3" target="_blank">Consulta</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <header class="hero text-center">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4 fw-bold mb-4">Dejá de perder horas con tareas repetitivas</h1>
-                    <p class="lead mb-4">Soy tu consultor técnico remoto. Te ayudo a automatizar procesos, crear tu web y elegir la tecnología correcta para que tu emprendimiento sea más eficiente y rentable.</p>
-                    <a href="https://wa.me/5491126372751?text=Hola!%20Quisiera%20agendar%20una%20llamada%20de%20diagnóstico%20gratuita." class="btn btn-whatsapp btn-lg" target="_blank">
-                        <i class="fab fa-whatsapp me-2"></i> Agendá una Llamada Gratuita
+            <h1 class="display-4 fw-bold mb-3">Soporte Técnico Especializado</h1>
+            <p class="lead mb-4">Mantenimiento, limpieza y optimización de sistemas en tiempo real.</p>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card p-4 shadow-sm border-0 mb-4" style="border-radius: 15px;">
+                    <h2 class="h4 mb-4 text-primary"><i class="fas fa-stethoscope me-2"></i>Protocolo de Optimización GetSmart</h2>
+                    <p>Aplicamos una metodología técnica para recuperar la fluidez de su herramienta de trabajo. Nuestro servicio incluye:</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Diagnóstico de Hardware:</strong> Identificación de cuellos de botella en CPU y RAM.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Saneamiento de Sistemas:</strong> Eliminación de malware y adware persistente.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Optimización Estructural:</strong> Depuración de registros y servicios en segundo plano.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Seguridad Preventiva:</strong> Configuración avanzada de firewalls y defensas nativas.</li>
+                    </ul>
+                </div>
+
+                <h3 class="h4 mb-4 mt-5"><i class="fas fa-list-ol me-2"></i>Pasos para iniciar su asistencia</h3>
+                <div class="row g-3 text-center">
+                    <div class="col-md-3">
+                        <div class="card p-3 step-card shadow-sm h-100">
+                            <div class="step-number mx-auto">1</div>
+                            <p class="small fw-bold">Comunicarse vía WhatsApp</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 step-card shadow-sm h-100">
+                            <div class="step-number mx-auto">2</div>
+                            <p class="small fw-bold">Descargar e Instalar RustDesk</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 step-card shadow-sm h-100">
+                            <div class="step-number mx-auto">3</div>
+                            <p class="small fw-bold">Reiniciar su Computadora</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 step-card shadow-sm h-100">
+                            <div class="step-number mx-auto">4</div>
+                            <p class="small fw-bold">Enviar ID de Conexión</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card p-4 shadow border-0 text-center" style="border-radius: 20px; background-color: white;">
+                    <i class="fas fa-headset fa-3x mb-3 text-primary"></i>
+                    <h3 class="h5 mb-3">Herramienta de Conexión</h3>
+                    <p class="text-muted small">Utilizamos RustDesk para una conexión cifrada y segura. Usted supervisa todo el proceso en su pantalla.</p>
+                    
+                    <a href="LINK_DE_DESCARGA_AQUI" class="btn btn-download text-white w-100 mb-3 shadow">
+                        <i class="fas fa-download me-2"></i> Descargar RustDesk
                     </a>
+                    
+                    <a href="https://wa.me/5491126372751?text=Hola!%20Me%20interesa%20conversar%20sobre%20tus%20servicios." class="btn btn-outline-success w-100 fw-bold">
+                        <i class="fab fa-whatsapp me-2"></i> Solicitar Turno
+                    </a>
+                    
+                    <hr>
+                    <p class="small text-muted"><i class="fas fa-info-circle me-1"></i> Recuerde que el soporte requiere una conexión estable a internet.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <section class="intro-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h2 class="mb-4">¿La parte técnica de tu negocio te abruma?</h2>
-                <p class="lead">Las planillas de cálculo interminables, la página web que no funciona, el miedo a elegir el software equivocado...</p>
-                <p><strong>Hola, soy GetSmart.</strong> Mi trabajo es encargarme de eso por vos. Con mis conocimientos en <strong>automatización, Python y desarrollo web</strong>, resuelvo tus problemas técnicos para que <strong>vos puedas enfocarte en hacer crecer tu negocio.</strong></p>
-            </div>
-            <div class="col-lg-6">
-                <!-- ELIGE UNA DE ESTAS OPCIONES: -->
-                
-                <!-- OPCIÓN 1: Persona aliviada (recomendada) -->
-                <!-- img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="img-fluid rounded shadow" alt="Persona aliviada y satisfecha"> -->
-                
-                <!-- OPCIÓN 2: Antes vs Después conceptual -->
-                <!-- <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" class="img-fluid rounded shadow" alt="De la confusion a la claridad"> -->
-                
-                <!-- OPCIÓN 3: Persona trabajando tranquila -->
-                <img src="imagen/abrumada.jpg" class="img-fluid rounded shadow" alt="Trabajando de manera eficiente">
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Soluciones que ofrezco</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-file-excel"></i>
-                        </div>
-                        <h3>Automatización con Excel</h3>
-                        <p>Macros y scripts personalizados para automatizar reportes, procesamiento de datos y dashboards interactivos que te ahorran horas de trabajo manual.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Soluciones Python</h3>
-                        <p>Programas a medida para web scraping, automatización de tareas, integración de APIs y análisis de datos para potenciar tu negocio.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3>Desarrollo Web</h3>
-                        <p>Páginas web profesionales, tiendas online con WooCommerce y landing pages optimizadas para conversión, desarrolladas en WordPress.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Cómo trabajo</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h4>Charlamos</h4>
-                        <p>Conversamos 15 minutos sin costo para entender tus desafíos y objetivos.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h4>Planificamos</h4>
-                        <p>Te presento una propuesta clara con solución, plazo y precio.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h4>Implemento</h4>
-                        <p>Trabajo remotamente en la solución mientras vos seguís con tu negocio.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h4>Entrego</h4>
-                        <p>Te explico cómo funciona todo y me quedo disponible para soporte.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Success Cases -->
-    <section id="success" class="py-5">
-        <div class="container">
-            <h2 class="section-title">Casos de éxito</h2>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100 border-0 shadow">
-                        <div class="card-body">
-                            <h4 class="card-title">Vendedor de Mercado Libre</h4>
-                            <h6 class="text-primary mb-3">Problema: Reportes manuales interminables</h6>
-                            <p class="card-text">Un cliente dedicaba más de 8 horas semanales a compilar reportes de ventas de diferentes plataformas.</p>
-                            <h6 class="text-primary mb-3">Solución: Dashboard automatizado</h6>
-                            <p class="card-text">Desarrollé un sistema en Python que se conecta con las APIs de Mercado Libre y otras plataformas, generando reportes automáticos con gráficos y análisis de tendencias.</p>
-                            <h6 class="text-success">Resultado: 6 horas recuperadas por semana</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100 border-0 shadow">
-                        <div class="card-body">
-                            <h4 class="card-title">Coach de Negocios</h4>
-                            <h6 class="text-primary mb-3">Problema: Pérdida de leads potenciales</h6>
-                            <p class="card-text">Las consultas llegaban por WhatsApp, email y redes sociales, y muchas se perdían en el flujo de mensajes.</p>
-                            <h6 class="text-primary mb-3">Solución: Landing page con integración</h6>
-                            <p class="card-text">Creé una landing page profesional en WordPress con formulario conectado directamente a su Google Sheets, organizando automáticamente todos los contactos.</p>
-                            <h6 class="text-success">Resultado: 30% más de consultas respondidas</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Lo que dicen mis clientes</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"GetSmart me automatizó el control de stock. Lo que antes me llevaba una mañana entera, ahora lo veo en un click. Impresionante."</p>
-                        <p class="testimonial-author">Roberto, Vendedor de Mercado Libre</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Por fin encontré a alguien que explica la tecnología en términos que entiendo. No solo resolvió mi problema, me enseñó a prevenirlo."</p>
-                        <p class="testimonial-author">María, Consultora Independiente</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"La landing page que me creó multiplicó por tres mis conversiones. Ahora tengo un sistema que trabaja por mí las 24 horas."</p>
-                        <p class="testimonial-author">Carlos, Coach de Negocios</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container text-center">
-            <h2 class="display-5 fw-bold mb-4">¿Listo para recuperar tu tiempo y hacer crecer tu negocio?</h2>
-            <p class="lead mb-4">Una pequeña inversión en automatización te devolverá cientos de horas.</p>
-            <a href="https://wa.me/5491126372751?text=Hola!%20Estoy%20listo%20para%20empezar%20a%20automatizar%20mi%20negocio." class="btn btn-whatsapp btn-lg" target="_blank">
-                <i class="fab fa-whatsapp me-2"></i> Agendá tu Llamada de Diagnóstico Gratuita
-            </a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
+        <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Contactame</h2>
@@ -629,54 +514,10 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/5491126372751?text=Hola!%20Visité%20tu%20página%20web%20y%20me%20interesa%20tu%20servicio." class="floating-whatsapp" target="_blank">
+        <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5491126372751?text=Hola!%20Visité%20tu%20página%20web%20y%20me%20interesa%20tu%20servicio%20de%20soporte%20remoto." class="floating-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <!-- Nueva sección de eventos en la página principal -->
-    <section class="events-section">
-        <div class="container">
-            <div class="row events-content">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="display-5 fw-bold mb-4">¿Planificando un evento?</h2>
-                    <p class="lead mb-5">También ofrecemos servicios tecnológicos para hacer tu fiesta, boda o evento corporativo realmente inolvidable</p>
-                    
-                    <div class="row g-4 mb-5">
-                        <div class="col-md-4">
-                            <div class="event-card">
-                                <div class="event-icon">
-                                    <i class="fas fa-vote-yea"></i>
-                                </div>
-                                <h4>Votación Interactiva</h4>
-                                <p>Sistema de votación en vivo para eventos y encuestas interactivas.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="event-card">
-                                <div class="event-icon">
-                                    <i class="fas fa-camera"></i>
-                                </div>
-                                <h4>Espejo Mágico</h4>
-                                <p>Fotografía divertida con plantillas personalizadas para tus invitados.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="event-card">
-                                <div class="event-icon">
-                                    <i class="fas fa-sync-alt"></i>
-                                </div>
-                                <h4>Video 360°</h4>
-                                <p>Experiencia inmersiva con videos en 360 grados para redes sociales.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="events.html" class="btn btn-events">Descubre nuestros servicios para eventos</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer>
@@ -717,14 +558,14 @@
   <span>Eventos</span>
 </a>
 
-<a href="soporte.html" class="floating-btn-events" id="floatingBtnEvents" style="display: none; position: fixed; bottom: 170px; right: 30px; background-color: #6b9fff; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; transition: all 0.3s ease; text-decoration: none;">
+<a href="index.html" class="floating-btn-events" id="floatingBtnEvents" style="display: none; position: fixed; bottom: 170px; right: 30px; background-color: #6b9fff; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; transition: all 0.3s ease; text-decoration: none;">
     <i class="fas fa-party-horn" style="font-size: 1.2rem; margin-bottom: 2px;"></i>
-    <span>Soporte</span>
+    <span>Solución</span>
 </a>
 
-<a href="soporte.html" class="floating-btn-events" id="floatingBtnEvents">
+<a href="index.html" class="floating-btn-events" id="floatingBtnEvents">
   <i class="fas fa-party-horn"></i>
-  <span>Soporte</span>
+  <span>Solución</span>
 </a>
 
 <script>
