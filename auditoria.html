@@ -2,135 +2,176 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>GetSmart - Informe de Rendimiento Avanzado</title>
+    <title>GetSmart - Auditoría de Sistemas Elite</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #2c3e50; --accent: #3498db; --success: #2bc032; }
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
-        .audit-card { border: none; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; }
-        .header-blue { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 40px; }
-        .chart-container { position: relative; height: 200px; width: 100%; }
-        .status-bar { height: 10px; border-radius: 5px; background: #eee; margin-top: 10px; }
+        :root { --primary: #1a252f; --accent: #3498db; --danger: #e74c3c; --success: #2ecc71; }
+        body { background-color: #f4f7f9; font-family: 'Inter', sans-serif; }
+        .hero { background: var(--primary); color: white; padding: 50px 0; border-radius: 0 0 50px 50px; }
+        .card-custom { border: none; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
+        .metric-card { text-align: center; padding: 25px; transition: 0.3s; }
+        .metric-card:hover { transform: translateY(-5px); }
+        .big-val { font-size: 3rem; font-weight: 800; display: block; line-height: 1; }
+        .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; }
     </style>
 </head>
 <body>
-    <div class="container my-5">
-        <div class="card audit-card mx-auto" style="max-width: 1000px;">
-            <div class="header-blue text-center">
-                <h1 class="h2 mb-0">ANÁLISIS DE INFRAESTRUCTURA GETSMART</h1>
-                <p id="pc-tag" class="opacity-75 mt-2 small"></p>
+
+<header class="hero text-center mb-5">
+    <div class="container">
+        <h1 class="display-5 fw-bold">REPORTE TÉCNICO DE INFRAESTRUCTURA</h1>
+        <p class="mb-0">GetSmart Advanced Analytics • <span id="pc-name"></span></p>
+    </div>
+</header>
+
+<div class="container pb-5">
+    <div class="card card-custom p-4 mb-4">
+        <div class="row">
+            <div class="col-md-3 border-end">
+                <small class="text-muted fw-bold">SISTEMA OPERATIVO</small>
+                <p id="os-txt" class="mb-0 fw-bold"></p>
+                <p id="arch-txt" class="small text-muted"></p>
             </div>
-
-            <div class="card-body p-4">
-                <div class="row text-center mb-5">
-                    <div class="col-md-4">
-                        <h6>Rendimiento RAM</h6>
-                        <canvas id="ramChart"></canvas>
-                        <p id="ram-info" class="fw-bold mt-2"></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h6>Velocidad Disco (MB/s)</h6>
-                        <canvas id="diskChart"></canvas>
-                        <p id="disk-info" class="fw-bold mt-2"></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h6>Puntaje GetSmart</h6>
-                        <canvas id="scoreChart"></canvas>
-                        <p class="small text-muted">Eficiencia General</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h5 class="border-bottom pb-2 mb-3">Especificaciones Detectadas</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-3"><strong>Procesador:</strong> <span id="cpu-name" class="text-muted d-block small"></span></li>
-                            <li class="mb-3"><strong>Placa de Video (GPU):</strong> <span id="gpu-name" class="text-primary d-block"></span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <h5 class="border-bottom pb-2 mb-3">Unidades de Almacenamiento</h5>
-                        <div id="disks-list"></div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-5">
-                    <a href="https://wa.me/TUNUMERO" class="btn btn-primary btn-lg px-5 shadow-lg" style="border-radius: 30px;">
-                        <i class="fab fa-whatsapp me-2"></i> Solicitar Optimización Avanzada
-                    </a>
-                </div>
+            <div class="col-md-5 border-end px-4">
+                <small class="text-muted fw-bold">PROCESADOR Y GRÁFICOS</small>
+                <p id="cpu-txt" class="mb-0 small"></p>
+                <p id="gpu-txt" class="mb-0 text-primary small fw-bold"></p>
+            </div>
+            <div class="col-md-2 border-end text-center">
+                <small class="text-muted fw-bold">SEGURIDAD</small>
+                <p id="av-txt" class="mb-0 fw-bold text-success"></p>
+            </div>
+            <div class="col-md-2 text-center">
+                <small class="text-muted fw-bold">BATERÍA</small>
+                <p id="bat-txt" class="mb-0 fw-bold"></p>
             </div>
         </div>
     </div>
 
-    <script>
-        const p = new URLSearchParams(window.location.search);
-        
-        // Cargar Datos Básicos
-        document.getElementById('pc-tag').innerText = "ID DISPOSITIVO: " + p.get('pc');
-        document.getElementById('cpu-name').innerText = p.get('cpu');
-        document.getElementById('gpu-name').innerText = p.get('gpu') || "Cargando...";
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card card-custom metric-card">
+                <h6>MEMORIA RAM</h6>
+                <span class="big-val" id="ram-val"></span>
+                <canvas id="ramChart" class="mt-3"></canvas>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-custom metric-card">
+                <h6>VELOCIDAD DISCO</h6>
+                <span class="big-val" id="disk-val"></span>
+                <span class="text-muted">MB/seg</span>
+                <canvas id="diskChart" class="mt-3"></canvas>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-custom metric-card">
+                <h6>SALUD GLOBAL</h6>
+                <span class="big-val" id="score-val"></span>
+                <p class="text-muted mt-2 small">Puntaje de Estabilidad</p>
+                <canvas id="scoreChart" class="mt-3"></canvas>
+            </div>
+        </div>
+    </div>
 
-        // Procesar Discos
-        const disksData = p.get('disks').split(';');
-        let diskListHtml = "";
-        let maxVel = 0;
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card card-custom p-4 h-100">
+                <h5 class="mb-4">Diagnóstico de Optimización</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Análisis</th>
+                                <th>Resultado</th>
+                                <th>Impacto</th>
+                            </tr>
+                        </thead>
+                        <tbody id="diag-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-custom p-4 h-100 bg-dark text-white text-center">
+                <h5>Mantenimiento Remoto</h5>
+                <p class="small opacity-75">Se detectaron áreas de mejora inmediata en su equipo.</p>
+                <div class="my-4">
+                    <div class="p-3 border border-secondary rounded mb-2">
+                        <small class="d-block text-muted">Apps al inicio:</small>
+                        <strong id="startup-txt"></strong>
+                    </div>
+                    <div class="p-3 border border-secondary rounded">
+                        <small class="d-block text-muted">Días sin reiniciar:</small>
+                        <strong id="uptime-txt"></strong>
+                    </div>
+                </div>
+                <a href="https://wa.me/TUNUMERO" class="btn btn-success w-100 py-3 fw-bold rounded-pill shadow">
+                    <i class="fab fa-whatsapp me-2"></i> AGENDAR LIMPIEZA
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-        disksData.forEach(d => {
-            const [model, cap, vel, type] = d.split('|');
-            if (parseInt(vel) > maxVel) maxVel = parseInt(vel);
-            diskListHtml += `
-                <div class="mb-3 p-2 bg-light rounded">
-                    <span class="small fw-bold">${model}</span><br>
-                    <span class="badge ${type === 'SSD' ? 'bg-success' : 'bg-secondary'}">${type}</span>
-                    <span class="small text-muted">${cap} GB | ${vel} MB/s</span>
-                </div>`;
-        });
-        document.getElementById('disks-list').innerHTML = diskListHtml;
+<script>
+    const p = new URLSearchParams(window.location.search);
+    
+    // Llenar Ficha
+    document.getElementById('pc-name').innerText = p.get('pc');
+    document.getElementById('os-txt').innerText = p.get('os');
+    document.getElementById('arch-txt').innerText = "Arquitectura: " + p.get('arch');
+    document.getElementById('cpu-txt').innerText = p.get('cpu');
+    document.getElementById('gpu-txt').innerText = p.get('gpu');
+    document.getElementById('av-txt').innerText = p.get('av');
+    document.getElementById('bat-txt').innerText = p.get('bat');
+    document.getElementById('startup-txt').innerText = p.get('startup') + " procesos";
+    document.getElementById('uptime-txt').innerText = p.get('uptime') + " días";
 
-        // --- CONFIGURACIÓN DE GRÁFICOS (Chart.js) ---
-        
-        // Gráfico RAM (Doughnut)
-        const ramVal = parseInt(p.get('ram'));
-        new Chart(document.getElementById('ramChart'), {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [ramVal, 16 - ramVal > 0 ? 16 - ramVal : 0],
-                    backgroundColor: [ramVal < 8 ? '#e74c3c' : '#2ecc71', '#eee']
-                }]
-            },
-            options: { cutout: '80%' }
-        });
-        document.getElementById('ram-info').innerText = ramVal + " GB";
+    const ram = parseInt(p.get('ram'));
+    const startup = parseInt(p.get('startup'));
+    const uptime = parseFloat(p.get('uptime'));
+    
+    // Procesar Discos
+    const disks = p.get('disks').split(';');
+    let maxVel = 0;
+    disks.forEach(d => {
+        const vel = parseInt(d.split('|')[2]);
+        if(vel > maxVel) maxVel = vel;
+    });
 
-        // Gráfico Velocidad Disco (Gauge style)
-        new Chart(document.getElementById('diskChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Su Velocidad', 'Ideal SSD'],
-                datasets: [{
-                    label: 'MB/s',
-                    data: [maxVel, 500],
-                    backgroundColor: [maxVel < 150 ? '#e74c3c' : '#3498db', '#2c3e50']
-                }]
-            }
-        });
-        document.getElementById('disk-info').innerText = maxVel + " MB/s";
+    document.getElementById('ram-val').innerText = ram;
+    document.getElementById('disk-val').innerText = maxVel;
 
-        // Gráfico Score Final
-        const score = Math.min(((ramVal/16)*50) + ((maxVel/500)*50), 100);
-        new Chart(document.getElementById('scoreChart'), {
-            type: 'polarArea',
-            data: {
-                labels: ['Puntaje'],
-                datasets: [{
-                    data: [score],
-                    backgroundColor: [score < 50 ? '#e74c3c' : '#2ecc71']
-                }]
-            }
-        });
-    </script>
+    // Cálculo de Score Inteligente (Penaliza startup alto y uptime alto)
+    let score = ((ram/16)*40) + ((maxVel/500)*40);
+    if(startup > 15) score -= 10;
+    if(uptime > 7) score -= 10;
+    score = Math.max(10, Math.min(score, 100));
+    document.getElementById('score-val').innerText = Math.round(score);
+
+    // Tabla de Diagnóstico
+    const diag = document.getElementById('diag-body');
+    const logs = [
+        { item: "Memoria RAM", val: ram+" GB", status: ram<8?"ALTO IMPACTO":"Óptimo", desc: ram<8?"El sistema requiere más memoria para multitarea.":"Suficiente para tareas normales." },
+        { item: "Arranque de Windows", val: startup+" apps", status: startup>15?"ALTO IMPACTO":"Ligero", desc: startup>15?"Demasiados programas cargando al inicio.":"Inicio optimizado." },
+        { item: "Persistencia", val: uptime+" días", status: uptime>5?"ADVERTENCIA":"Bajo", desc: uptime>5?"Reiniciar ayuda a liberar procesos colgados.":"Ciclo de apagado correcto." },
+        { item: "Disco Principal", val: maxVel+" MB/s", status: maxVel<150?"CRÍTICO":"Óptimo", desc: maxVel<150?"El disco mecánico está estrangulando la PC.":"Respuesta de alta velocidad." }
+    ];
+
+    logs.forEach(l => {
+        const color = l.status.includes("Óptimo") || l.status.includes("Ligero") || l.status.includes("Bajo") ? "success" : "danger";
+        diag.innerHTML += `<tr><td><strong>${l.item}</strong></td><td><span class="badge bg-${color}">${l.val}</span></td><td><small>${l.desc}</small></td></tr>`;
+    });
+
+    // Gráficos
+    const cfg = { type: 'doughnut', options: { cutout: '85%', plugins: { legend: {display:false} } } };
+    new Chart(document.getElementById('ramChart'), { ...cfg, data: { datasets: [{ data: [ram, 16], backgroundColor: [ram<8?'#e74c3c':'#2ecc71', '#eee'] }] } });
+    new Chart(document.getElementById('diskChart'), { ...cfg, data: { datasets: [{ data: [maxVel, 500], backgroundColor: [maxVel<150?'#e74c3c':'#3498db', '#eee'] }] } });
+    new Chart(document.getElementById('scoreChart'), { ...cfg, data: { datasets: [{ data: [score, 100-score], backgroundColor: [score<50?'#e74c3c':'#2ecc71', '#eee'] }] } });
+
+</script>
 </body>
 </html>
