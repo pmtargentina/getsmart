@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetSmart - Informe de Auditoría</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; }
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; padding-top: 50px; }
+        .card-informe { border: none; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .header-audit { background: var(--primary); color: white; padding: 30px; border-radius: 15px 15px 0 0; }
+        .stat-val { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
+        .badge-status { font-size: 0.9rem; padding: 5px 12px; border-radius: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="card card-informe mx-auto" style="max-width: 900px;">
+            <div class="header-audit text-center">
+                <i class="fas fa-microchip fa-3x mb-3"></i>
+                <h1 class="h3">Informe Técnico de Rendimiento</h1>
+                <p class="mb-0 text-uppercase" id="pc-name" style="letter-spacing: 2px;"></p>
+            </div>
+            
+            <div class="card-body p-4">
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6 border-end">
+                        <h5 class="text-muted small text-uppercase fw-bold">Unidad de Procesamiento (CPU)</h5>
+                        <p id="cpu-name" class="fw-bold mb-1"></p>
+                        <p class="text-muted small"><span id="cpu-cores"></span> Núcleos Detectados</p>
+                    </div>
+                    <div class="col-md-3 border-end">
+                        <h5 class="text-muted small text-uppercase fw-bold">Memoria RAM</h5>
+                        <p id="ram-val" class="stat-val mb-0"></p>
+                        <div id="ram-status"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="text-muted small text-uppercase fw-bold">Velocidad Disco</h5>
+                        <p id="disk-speed" class="stat-val mb-0"></p>
+                        <div id="disk-status"></div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h5 class="my-4"><i class="fas fa-balance-scale me-2 text-primary"></i>Comparativa de Estándares GetSmart</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Componente</th>
+                                <th>Su Equipo</th>
+                                <th>Estándar Profesional</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-comparativa">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="alert alert-light border mt-4 text-center">
+                    <p class="mb-3">¿Sus resultados no son los ideales? Nuestro protocolo de optimización puede recuperar la velocidad de su equipo.</p>
+                    <a href="https://wa.me/TUNUMERO?text=Hola! Acabo de realizar el test y me gustaría optimizar mi PC" class="btn btn-success btn-lg px-5 shadow-sm">
+                        <i class="fab fa-whatsapp me-2"></i> Solicitar Mejora Remota
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para capturar parámetros de la URL
+        const p = new URLSearchParams(window.location.search);
+        
+        // Asignar valores básicos
+        document.getElementById('pc-name').innerText = p.get('pc') || 'Equipo Analizado';
+        document.getElementById('cpu-name').innerText = p.get('cpu') || 'No detectado';
+        document.getElementById('cpu-cores').innerText = p.get('n_f') || '-';
+        document.getElementById('ram-val').innerText = p.get('ram') + ' GB';
+        
+        const speed = parseInt(p.get('disk_vel')) || 0;
+        document.getElementById('disk-speed').innerText = speed + ' MB/s';
+
+        // Lógica de Estatus
+        const ram = parseInt(p.get('ram'));
+        document.getElementById('ram-status').innerHTML = ram >= 8 
+            ? '<span class="badge bg-success badge-status">Óptimo</span>' 
+            : '<span class="badge bg-warning text-dark badge-status">Mejorable</span>';
+
+        document.getElementById('disk-status').innerHTML = speed > 150 
+            ? '<span class="badge bg-success badge-status">Sólido (SSD)</span>' 
+            : '<span class="badge bg-danger badge-status">Lento (HDD)</span>';
+
+        // Inyectar Tabla
+        const tabla = document.getElementById('tabla-comparativa');
+        const componentes = [
+            { nombre: 'Procesador', actual: p.get('cpu').substring(0,25)+'...', recomendado: 'i5 / Ryzen 5 o superior' },
+            { nombre: 'RAM', actual: ram + ' GB', recomendado: 'Mínimo 8 GB' },
+            { nombre: 'Almacenamiento', actual: p.get('disk_type') || 'HDD', recomendado: 'Estado Sólido (SSD)' }
+        ];
+
+        componentes.forEach(c => {
+            tabla.innerHTML += `<tr><td><strong>${c.nombre}</strong></td><td>${c.actual}</td><td class="text-primary fw-bold">${c.recomendado}</td></tr>`;
+        });
+    </script>
+</body>
+</html>
