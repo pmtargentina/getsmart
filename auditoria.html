@@ -2,176 +2,127 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>GetSmart - Auditoría de Sistemas Elite</title>
+    <title>GetSmart - Dashboard de Auditoría</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #1a252f; --accent: #3498db; --danger: #e74c3c; --success: #2ecc71; }
-        body { background-color: #f4f7f9; font-family: 'Inter', sans-serif; }
-        .hero { background: var(--primary); color: white; padding: 50px 0; border-radius: 0 0 50px 50px; }
-        .card-custom { border: none; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
-        .metric-card { text-align: center; padding: 25px; transition: 0.3s; }
-        .metric-card:hover { transform: translateY(-5px); }
-        .big-val { font-size: 3rem; font-weight: 800; display: block; line-height: 1; }
-        .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; }
+        :root { --dark: #0f172a; --blue: #3b82f6; --green: #10b981; --amber: #f59e0b; --red: #ef4444; }
+        body { background-color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        .header { background: var(--dark); color: white; padding: 40px 0; border-radius: 0 0 40px 40px; border-bottom: 6px solid var(--blue); }
+        .card-glass { border: none; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: 0.3s; }
+        .chart-container { position: relative; width: 160px; height: 160px; margin: 0 auto; }
+        .chart-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%); text-align: center; width: 100%; }
+        .chart-center strong { display: block; font-size: 2rem; font-weight: 800; line-height: 1; color: var(--dark); }
+        .chart-center span { font-size: 0.7rem; text-transform: uppercase; color: #64748b; font-weight: bold; }
+        .badge-humo { background: #fee2e2; color: #b91c1c; padding: 8px 15px; border-radius: 12px; font-weight: 700; font-size: 0.85rem; border: 1px solid #fecaca; }
     </style>
 </head>
 <body>
 
-<header class="hero text-center mb-5">
+<div class="header text-center shadow-lg">
     <div class="container">
-        <h1 class="display-5 fw-bold">REPORTE TÉCNICO DE INFRAESTRUCTURA</h1>
-        <p class="mb-0">GetSmart Advanced Analytics • <span id="pc-name"></span></p>
+        <h1 class="fw-bold m-0 text-uppercase" style="letter-spacing: 5px;">SISTEMA ANALIZADO: <span id="pc-name" class="text-info"></span></h1>
+        <p class="opacity-50 small mt-2 fw-bold">GETSMART AUDIT CORE v4.0 • HIGH-PRIORITY SCAN</p>
     </div>
-</header>
+</div>
 
-<div class="container pb-5">
-    <div class="card card-custom p-4 mb-4">
-        <div class="row">
-            <div class="col-md-3 border-end">
-                <small class="text-muted fw-bold">SISTEMA OPERATIVO</small>
-                <p id="os-txt" class="mb-0 fw-bold"></p>
-                <p id="arch-txt" class="small text-muted"></p>
-            </div>
-            <div class="col-md-5 border-end px-4">
-                <small class="text-muted fw-bold">PROCESADOR Y GRÁFICOS</small>
-                <p id="cpu-txt" class="mb-0 small"></p>
-                <p id="gpu-txt" class="mb-0 text-primary small fw-bold"></p>
-            </div>
-            <div class="col-md-2 border-end text-center">
-                <small class="text-muted fw-bold">SEGURIDAD</small>
-                <p id="av-txt" class="mb-0 fw-bold text-success"></p>
-            </div>
-            <div class="col-md-2 text-center">
-                <small class="text-muted fw-bold">BATERÍA</small>
-                <p id="bat-txt" class="mb-0 fw-bold"></p>
-            </div>
-        </div>
-    </div>
-
+<div class="container my-5">
     <div class="row g-4 mb-5">
-        <div class="col-md-4">
-            <div class="card card-custom metric-card">
-                <h6>MEMORIA RAM</h6>
-                <span class="big-val" id="ram-val"></span>
-                <canvas id="ramChart" class="mt-3"></canvas>
+        <div class="col-6 col-md-3">
+            <div class="card card-glass p-4 text-center">
+                <div class="chart-container">
+                    <canvas id="ramChart"></canvas>
+                    <div class="chart-center"><strong id="ram-txt"></strong><span>RAM (GB)</span></div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-custom metric-card">
-                <h6>VELOCIDAD DISCO</h6>
-                <span class="big-val" id="disk-val"></span>
-                <span class="text-muted">MB/seg</span>
-                <canvas id="diskChart" class="mt-3"></canvas>
+        <div class="col-6 col-md-3">
+            <div class="card card-glass p-4 text-center">
+                <div class="chart-container">
+                    <canvas id="diskChart"></canvas>
+                    <div class="chart-center"><strong id="disk-txt"></strong><span>MB/S</span></div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-custom metric-card">
-                <h6>SALUD GLOBAL</h6>
-                <span class="big-val" id="score-val"></span>
-                <p class="text-muted mt-2 small">Puntaje de Estabilidad</p>
-                <canvas id="scoreChart" class="mt-3"></canvas>
+        <div class="col-6 col-md-3">
+            <div class="card card-glass p-4 text-center">
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                    <div class="chart-center"><strong id="temp-txt"></strong><span>BASURA</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card card-glass p-4 text-center">
+                <div class="chart-container">
+                    <canvas id="scoreChart"></canvas>
+                    <div class="chart-center"><strong id="score-txt"></strong><span>SALUD</span></div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="row g-4">
-        <div class="col-lg-8">
-            <div class="card card-custom p-4 h-100">
-                <h5 class="mb-4">Diagnóstico de Optimización</h5>
-                <div class="table-responsive">
-                    <table class="table align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Análisis</th>
-                                <th>Resultado</th>
-                                <th>Impacto</th>
-                            </tr>
-                        </thead>
-                        <tbody id="diag-body"></tbody>
-                    </table>
+        <div class="col-lg-7">
+            <div class="card card-glass p-4 h-100 border-top border-5 border-primary">
+                <h5 class="fw-bold mb-4"><i class="fas fa-microchip me-2 text-primary"></i>ESPECIFICACIONES DE INFRAESTRUCTURA</h5>
+                <div class="row g-4">
+                    <div class="col-6"><small class="text-muted d-block fw-bold small">PLACA MADRE</small><span id="board" class="fw-bold"></span></div>
+                    <div class="col-6"><small class="text-muted d-block fw-bold small">VERSION BIOS</small><span id="bios" class="fw-bold"></span></div>
+                    <div class="col-6"><small class="text-muted d-block fw-bold small">INSTALACION OS</small><span id="inst" class="fw-bold"></span></div>
+                    <div class="col-6"><small class="text-muted d-block fw-bold small">PROCESOS CORE</small><span id="procs" class="fw-bold"></span></div>
+                    <div class="col-12"><div class="p-3 bg-light rounded-4 border"><small class="text-muted d-block fw-bold small mb-1">UNIDAD GRÁFICA (GPU)</small><span id="gpu" class="fw-bold text-primary"></span></div></div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card card-custom p-4 h-100 bg-dark text-white text-center">
-                <h5>Mantenimiento Remoto</h5>
-                <p class="small opacity-75">Se detectaron áreas de mejora inmediata en su equipo.</p>
-                <div class="my-4">
-                    <div class="p-3 border border-secondary rounded mb-2">
-                        <small class="d-block text-muted">Apps al inicio:</small>
-                        <strong id="startup-txt"></strong>
-                    </div>
-                    <div class="p-3 border border-secondary rounded">
-                        <small class="d-block text-muted">Días sin reiniciar:</small>
-                        <strong id="uptime-txt"></strong>
-                    </div>
-                </div>
-                <a href="https://wa.me/TUNUMERO" class="btn btn-success w-100 py-3 fw-bold rounded-pill shadow">
-                    <i class="fab fa-whatsapp me-2"></i> AGENDAR LIMPIEZA
-                </a>
+        <div class="col-lg-5">
+            <div class="card card-glass p-4 h-100 bg-white border-top border-5 border-danger text-center">
+                <h5 class="fw-bold mb-4">RIESGOS DETECTADOS</h5>
+                <div id="alerts-box" class="d-flex flex-wrap justify-content-center mb-4"></div>
+                <hr>
+                <p class="small text-muted mb-4">Se recomienda una intervención inmediata para restaurar los niveles de velocidad GetSmart.</p>
+                <a href="https://wa.me/TUNUMERO" class="btn btn-dark w-100 py-3 fw-bold rounded-pill shadow-lg">INICIAR LIMPIEZA TOTAL</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    const p = new URLSearchParams(window.location.search);
-    
-    // Llenar Ficha
-    document.getElementById('pc-name').innerText = p.get('pc');
-    document.getElementById('os-txt').innerText = p.get('os');
-    document.getElementById('arch-txt').innerText = "Arquitectura: " + p.get('arch');
-    document.getElementById('cpu-txt').innerText = p.get('cpu');
-    document.getElementById('gpu-txt').innerText = p.get('gpu');
-    document.getElementById('av-txt').innerText = p.get('av');
-    document.getElementById('bat-txt').innerText = p.get('bat');
-    document.getElementById('startup-txt').innerText = p.get('startup') + " procesos";
-    document.getElementById('uptime-txt').innerText = p.get('uptime') + " días";
+    const url = new URLSearchParams(window.location.search);
+    document.getElementById('pc-name').innerText = url.get('pc');
+    document.getElementById('board').innerText = url.get('board');
+    document.getElementById('bios').innerText = url.get('bios');
+    document.getElementById('inst').innerText = url.get('inst');
+    document.getElementById('procs').innerText = url.get('procs');
+    document.getElementById('gpu').innerText = url.get('gpu');
 
-    const ram = parseInt(p.get('ram'));
-    const startup = parseInt(p.get('startup'));
-    const uptime = parseFloat(p.get('uptime'));
-    
-    // Procesar Discos
-    const disks = p.get('disks').split(';');
-    let maxVel = 0;
-    disks.forEach(d => {
-        const vel = parseInt(d.split('|')[2]);
-        if(vel > maxVel) maxVel = vel;
+    const ram = parseInt(url.get('ram'));
+    const disk = parseInt(url.get('disks').split('|')[2]);
+    const temps = parseInt(url.get('temps'));
+    const start = parseInt(url.get('start'));
+
+    document.getElementById('ram-txt').innerText = ram;
+    document.getElementById('disk-txt').innerText = disk;
+    document.getElementById('temp-txt').innerText = temps;
+
+    const alertBox = document.getElementById('alerts-box');
+    if(temps > 100) alertBox.innerHTML += `<div class="badge-humo m-1">⚠️ ${temps} Archivos Obsoletos</div>`;
+    if(start > 15) alertBox.innerHTML += `<div class="badge-humo m-1">🚀 Sistema de Arranque Sobrecargado</div>`;
+    if(disk < 150) alertBox.innerHTML += `<div class="badge-humo m-1">🐌 Disco HDD Lento</div>`;
+
+    const chartCfg = (color, val, max) => ({
+        type: 'doughnut',
+        data: { datasets: [{ data: [val, Math.max(0, max-val)], backgroundColor: [color, '#f1f5f9'], borderWidth: 0 }] },
+        options: { cutout: '80%', plugins: { legend: {display: false} }, animation: { duration: 2500 } }
     });
 
-    document.getElementById('ram-val').innerText = ram;
-    document.getElementById('disk-val').innerText = maxVel;
-
-    // Cálculo de Score Inteligente (Penaliza startup alto y uptime alto)
-    let score = ((ram/16)*40) + ((maxVel/500)*40);
-    if(startup > 15) score -= 10;
-    if(uptime > 7) score -= 10;
-    score = Math.max(10, Math.min(score, 100));
-    document.getElementById('score-val').innerText = Math.round(score);
-
-    // Tabla de Diagnóstico
-    const diag = document.getElementById('diag-body');
-    const logs = [
-        { item: "Memoria RAM", val: ram+" GB", status: ram<8?"ALTO IMPACTO":"Óptimo", desc: ram<8?"El sistema requiere más memoria para multitarea.":"Suficiente para tareas normales." },
-        { item: "Arranque de Windows", val: startup+" apps", status: startup>15?"ALTO IMPACTO":"Ligero", desc: startup>15?"Demasiados programas cargando al inicio.":"Inicio optimizado." },
-        { item: "Persistencia", val: uptime+" días", status: uptime>5?"ADVERTENCIA":"Bajo", desc: uptime>5?"Reiniciar ayuda a liberar procesos colgados.":"Ciclo de apagado correcto." },
-        { item: "Disco Principal", val: maxVel+" MB/s", status: maxVel<150?"CRÍTICO":"Óptimo", desc: maxVel<150?"El disco mecánico está estrangulando la PC.":"Respuesta de alta velocidad." }
-    ];
-
-    logs.forEach(l => {
-        const color = l.status.includes("Óptimo") || l.status.includes("Ligero") || l.status.includes("Bajo") ? "success" : "danger";
-        diag.innerHTML += `<tr><td><strong>${l.item}</strong></td><td><span class="badge bg-${color}">${l.val}</span></td><td><small>${l.desc}</small></td></tr>`;
-    });
-
-    // Gráficos
-    const cfg = { type: 'doughnut', options: { cutout: '85%', plugins: { legend: {display:false} } } };
-    new Chart(document.getElementById('ramChart'), { ...cfg, data: { datasets: [{ data: [ram, 16], backgroundColor: [ram<8?'#e74c3c':'#2ecc71', '#eee'] }] } });
-    new Chart(document.getElementById('diskChart'), { ...cfg, data: { datasets: [{ data: [maxVel, 500], backgroundColor: [maxVel<150?'#e74c3c':'#3498db', '#eee'] }] } });
-    new Chart(document.getElementById('scoreChart'), { ...cfg, data: { datasets: [{ data: [score, 100-score], backgroundColor: [score<50?'#e74c3c':'#2ecc71', '#eee'] }] } });
-
+    new Chart(document.getElementById('ramChart'), chartCfg('#3b82f6', ram, 16));
+    new Chart(document.getElementById('diskChart'), chartCfg('#10b981', disk, 550));
+    new Chart(document.getElementById('tempChart'), chartCfg('#f59e0b', temps, 500));
+    
+    const score = Math.round(((ram/16)*40) + ((disk/550)*60));
+    document.getElementById('score-txt').innerText = score + "%";
+    new Chart(document.getElementById('scoreChart'), chartCfg(score > 60 ? '#10b981' : '#ef4444', score, 100));
 </script>
 </body>
 </html>
