@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>GetSmart Intelligence Report</title>
+    <link rel="icon" href="./imagen/icono.jpg" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,14 +20,6 @@
         .val { font-weight: 700; color: var(--dark); }
         .alert-item { background: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; border-left: 5px solid var(--red); }
    
-
-
-        .hero-soporte { background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%); color: white; padding: 60px 0; border-radius: 0 0 50px 50px; }
-        .step-card { transition: transform 0.3s; border: none; border-radius: 15px; }
-        .step-card:hover { transform: translateY(-5px); }
-        .step-number { width: 40px; height: 40px; background-color: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px; }
-        .btn-download { background-color: var(--accent); border: none; padding: 15px 30px; font-weight: bold; font-size: 1.1rem; border-radius: 10px; transition: 0.3s; }
-        .btn-download:hover { background-color: #2980b9; transform: scale(1.05); }
         
         .navbar {
             background-color: white;
@@ -115,126 +108,8 @@
             border-radius: 20px;
             margin: 40px 0;
         }
+    
         
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-            height: 100%;
-            border-top: 5px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--secondary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .service-card:hover:before {
-            transform: scaleX(1);
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin: 15px;
-            position: relative;
-        }
-        
-        .testimonial-card:before {
-            content: '"';
-            font-size: 5rem;
-            color: var(--secondary);
-            opacity: 0.1;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-family: Georgia, serif;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        .process-step {
-            text-align: center;
-            padding: 30px;
-            position: relative;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .process-step:not(:last-child):after {
-            content: '';
-            position: absolute;
-            top: 60px;
-            left: 50%;
-            width: 80%;
-            height: 2px;
-            background: var(--secondary);
-            transform: translateX(-50%);
-        }
-        
-        .cta-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
-            border-radius: 30px;
-            margin: 80px 0;
-        }
-        
-        .contact-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 80px 0;
-            border-radius: 20px;
-        }
         
         .whatsapp-card {
             background: white;
@@ -307,95 +182,7 @@
                 display: none;
             }
         }
-         /* Nuevos estilos para la sección de eventos */
-        .events-section {
-            background: linear-gradient(to right, #2c3e50, #4a6491);
-            color: white;
-            padding: 80px 0;
-            border-radius: 20px;
-            margin: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
         
-        .events-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover;
-            opacity: 0.2;
-            z-index: 0;
-        }
-        
-        .events-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .event-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-            height: 100%;
-        }
-        
-        .event-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .event-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #2bc032;
-        }
-        
-        .btn-events {
-            background-color: transparent;
-            border: 2px solid white;
-            color: white;
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-events:hover {
-            background-color: white;
-            color: #2c3e50;
-        }
-        .floating-btn-events {
-        position: fixed;
-        bottom: 100px;
-        right: 30px;
-        background-color: #2bc032;
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.7rem;
-        font-weight: bold;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        z-index: 1000;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        }
-
-        .floating-btn-events:hover {
-        transform: scale(1.1);
-        background-color: #ff5252;
-        }
    
    </style>
 </head>
