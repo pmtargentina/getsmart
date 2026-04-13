@@ -18,9 +18,406 @@
         .chart-label span { font-size: 0.6rem; text-transform: uppercase; font-weight: bold; color: #64748b; }
         .val { font-weight: 700; color: var(--dark); }
         .alert-item { background: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; border-left: 5px solid var(--red); }
-    </style>
+   
+
+
+        .hero-soporte { background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%); color: white; padding: 60px 0; border-radius: 0 0 50px 50px; }
+        .step-card { transition: transform 0.3s; border: none; border-radius: 15px; }
+        .step-card:hover { transform: translateY(-5px); }
+        .step-number { width: 40px; height: 40px; background-color: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px; }
+        .btn-download { background-color: var(--accent); border: none; padding: 15px 30px; font-weight: bold; font-size: 1.1rem; border-radius: 10px; transition: 0.3s; }
+        .btn-download:hover { background-color: #2980b9; transform: scale(1.05); }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #219627;
+            border-color: #219627;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            border-color: #128C7E;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('imagen/soporte.png');
+            background-size: 50%;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        .intro-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            height: 100%;
+            border-top: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin: 15px;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--secondary);
+            opacity: 0.1;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .process-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            width: 80%;
+            height: 2px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+        
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            border-radius: 30px;
+            margin: 80px 0;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+            border-radius: 20px;
+        }
+        
+        .whatsapp-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .whatsapp-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .whatsapp-icon {
+            font-size: 3rem;
+            color: #25D366;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+                text-align: center;
+            }
+            
+            .process-step:not(:last-child):after {
+                display: none;
+            }
+        }
+         /* Nuevos estilos para la sección de eventos */
+        .events-section {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 80px 0;
+            border-radius: 20px;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .events-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .events-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .event-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2bc032;
+        }
+        
+        .btn-events {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-events:hover {
+            background-color: white;
+            color: #2c3e50;
+        }
+        .floating-btn-events {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        background-color: #2bc032;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        }
+
+        .floating-btn-events:hover {
+        transform: scale(1.1);
+        background-color: #ff5252;
+        }
+   
+   </style>
 </head>
 <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="imagen/logo.png" width="150px" alt="GetSmart Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                </ul>
+                <a href="https://wa.me/5491126372751?text=Hola!%20Visité%20tu%20página%20web%20y%20me%20interesa%20tu%20servicio%20de%20soporte%20remoto." class="btn btn-primary ms-lg-3" target="_blank">Consulta</a>
+            </div>
+        </div>
+    </nav>
 
 <div class="header text-center">
     <div class="container">
@@ -166,5 +563,32 @@
     chart('trashChart', '#f59e0b', trash, 500);
     chart('scoreChart', sc > 60 ? '#10b981' : '#ef4444', sc, 100);
 </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>GetSmart Soluciones Informáticas</h4>
+                    <p>Automatizo tu negocio para que ganes tiempo y vendas más.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-envelope me-2"></i> hola.getsmart@gmail.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +54 9 11 2637-2751</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Seguime</h4>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/5491126372751" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="text-center mb-0">© 2025 GetSmart Soluciones Informáticas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
